@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+
+</style>
+<link type="text/css" rel="stylesheet" href="Animate.css">
+<script src="jquery-1.9.1.js"></script>
+<script src="jq.scrollto.js"></script>
+<script src="stellar.js"></script>
+<script src="Headroom.js"></script>
+</head>
+<body>
+<header id="header" class="header header--fixed hide-from-print" role="banner">
+  <div class="container">
+    <nav id="nav" class="nav-wrapper" role="navigation">
+      <ul class="nav nav--main">
+        <li class="nav__item ">
+          <a class="header__link subdued" href="https://www.github.com/WickyNilliams/headroom.js">
+            <span aria-hidden="true" class="icon icon--github"></span>
+            <span class="complimentary push--left">GitHub</span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a class="header__link subdued" href="http://www.twitter.com/WickyNilliams">
+            <span aria-hidden="true" class="icon icon--twitter"></span>
+            <span class="complimentary push--left">@WickyNilliams</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <a href="../" class="brand header__link">
+      <b class="brand__forename">Headroom</b><b class="brand__surname">.js</b>
+    </a>
+  </div>
+  
+</header>
+
+
+<div class="bgbox1 bgbox" data-stellar-background-ratio="0.5">
+<h1  class="H1left">你不说我不说谁都别说</h1>
+
+</div>
+<div class="bgbox2 bgbox" id="bgbox2" data-stellar-background-ratio="0.5">
+<h1 class="H1left">你不说我不说谁都别说</h1>
+
+</div>
+<div  class="bgbox3 bgbox" data-stellar-background-ratio="0.5">
+<h1>你不说我不说谁都别说</h1>
+
+</div>
+
+<div class="bgbox4 bgbox"  data-stellar-background-ratio="0.5">
+<h1>你不说我不说谁都别说</h1>
+
+</div>
+
+
+
+<script>
+
+
+$(function(){
+			$.stellar({
+				horizontalScrolling: false,
+				verticalOffset: 40
+			});
+		});
+
+$(document).ready(function(e) {
+	
+	
+	var oBoxHeight= $(".bgbox").height();
+	var windowHeight=$(window).height();
+
+$(window).scroll(function(){
+	// 获取页面元素
+var myElement = document.querySelector("header");
+// 创建 Headroom 对象，将页面元素传递进去
+var headroom  = new Headroom(myElement);
+// 初始化
+headroom.init(); 
+	
+	
+	})
+
+	
+	window.onresize=function(){
+		var windowHeight=$(window).height();
+		$(".bgbox").css({"height":windowHeight,"max-height":1000})
+		
+	}
+	
+    $("#btul li").click(function(){
+		  var i=$(this).index()+1;
+            $.scrollTo(".bgbox"+i,1000); 
+		})
+});
+
+</script>
+
+</body>
+</html>

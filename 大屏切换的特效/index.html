@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.9.1.js"></script>
+</head>
+
+<style>
+*{ margin:0; padding:0}
+li{ list-style:none}
+a{ text-decoration:none}
+img{ border:0}
+.pic_bk{ width:100%; height:700px; overflow:hidden; position:relative;}
+.pic_bk ul{ width:100%; height:5000px; position:absolute; top:0px; left:0px;}
+.pic_bk ul li{ height:700px; width:100%; }
+</style>
+<body>
+<div class="pic_bk">
+<ul>
+ <li> <img src="希腊.jpg" height="700"> </li>
+  <li><img src="塞浦路斯.jpg" height="700"></li>
+</ul>
+</div>
+
+
+<div class="pci_bk_btn">
+ <ul>
+  <li>1</li>
+  <li>2</li>
+ </ul>
+
+</div>
+<script>
+$(document).ready(function(e) {
+    
+	var picUl=$(".pic_bk ul");
+	var picLi=picUl.children("li");
+	var picNum=picLi.length;
+	var picIndex=picLi.index();
+	var btn=$(".pci_bk_btn ul li");
+    btn.click(function(){
+		 var thisIndex=$(this).index();
+		if(Math.abs(picUl.offset().top)>Math.abs(picLi.height()*thisIndex)){
+	 	 picUl.animate({"top":-picLi.height()*thisIndex+30},1000,function(){
+		 picUl.animate({"top":-picLi.height()*thisIndex},1500)
+ 		});		 
+		}
+		else{
+				 picUl.animate({"top":-picLi.height()*thisIndex-30},1000,function(){
+		 picUl.animate({"top":-picLi.height()*thisIndex},1500)
+ 		});		 
+			
+		}
+		
+	 });
+	
+});
+
+
+</script>
+
+</body>
+</html>
