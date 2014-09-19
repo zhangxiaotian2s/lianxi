@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+
+<script src="js/jquery-1.7.2.js"></script>
+<script src="js/move.js"></script>
+<!--[if IE 6]>
+	<script src="js/IE6PNG.js"></script>
+    <script>
+    	DD_belatedPNG.fix(".png,.eight ul li div");
+    </script>
+<![endif]-->
+
+<style>
+*{ margin:0; padding:0}
+li{ list-style:none}
+a{ text-decoration:none}
+img{ border:0}
+
+.qq{ width:38px; height:40px; background:url(images/bk.png) 0px 0px   }
+.eight{ width:1000px; height:150px; overflow:hidden; margin:0 auto; position:relative}
+.eight ul{ width:auto; position:absolute; left:0px;}
+.eight ul li{ width:250px; height:150px; overflow:hidden; float:left; display:inline; position:relative}
+.eight ul li img{ display:block; width:250px; height:150px;}
+.eight ul li .bkgif{ position:absolute; top:0px; left:0px; width:250px; height:150px;background:url(images/blank50bk.png);}
+</style>
+
+</head>
+<body>
+
+
+
+
+<div class="eight">
+ <ul id="scrollUl">
+  <li>
+    <img src="images/1.png" width="250" height="150">
+   <div class="bkgif"></div> 
+    
+  </li>
+   <li>
+    <img src="images/2.png" width="250" height="150">
+    <div class="bkgif"></div> 
+  </li>
+   <li>
+    <img src="images/3.png" width="250" height="150">
+    <div class="bkgif"></div> 
+  </li>
+   <li>
+    <img src="images/4.png" width="250" height="150">
+    <div class="bkgif"></div> 
+  </li>
+  
+   <li>
+    <img src="images/1.png" width="250" height="150">
+   <div class="bkgif"></div> 
+    
+  </li>
+  
+   <li>
+    <img src="images/2.png" width="250" height="150">
+    <div class="bkgif"></div> 
+  </li>
+   <li>
+    <img src="images/3.png" width="250" height="150">
+    <div class="bkgif"></div> 
+  </li>
+   <li>
+    <img src="images/4.png" width="250" height="150">
+    <div class="bkgif"></div> 
+  </li>
+  
+ 
+ </ul>
+
+
+
+</div>
+
+
+
+<script>
+$(document).ready(function() {
+ $(".eight ul li").hover(function(){
+
+		$(this).children(".bkgif").slideUp();
+		},function(){
+	  $(".eight ul li").children(".bkgif").stop(true,true)
+         $(".eight ul li").children(".bkgif").slideDown()
+		
+		})
+	
+
+var S_ul=$("#scrollUl");
+var S_ulboxwidth=S_ul.parents().width();
+var S_li=S_ul.children("li");
+
+var S_ulwidht=S_li.outerWidth()*S_li.length;
+var speed=0;
+var S_shownum=S_ulboxwidth/S_li.outerWidth();
+S_ul.css('width',S_ulwidht);
+function scrolllf(){
+	speed+=1;
+  if(speed >=S_li.length-S_shownum){
+	  speed=0;
+	  for(i=0;i<S_li.length-S_shownum;i++){
+	  S_li.eq(i).animate({width:250},1000)
+	 }
+	  
+
+	  }
+	S_li.eq(speed-1).animate({display:none},1000)
+	
+
+	
+	}
+
+setInterval(scrolllf,3000)
+
+
+});
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
