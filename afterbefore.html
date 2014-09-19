@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CSS放大将效果</title>
+<style>
+html, body {
+ border: none;
+ overflow: hidden;
+}
+body {
+ background: url(http://files.jb51.net/file_images/article/201212/201212101129555.jpg);
+ cursor: crosshair;
+}
+#divBox {
+ position: absolute;
+}
+#divBox * {
+ position: absolute;
+}
+#divMask {
+ width: 160px;
+ height: 160px;
+ border-radius: 80px;
+ background: #000 url(http://files.jb51.net/file_images/article/201212/201212101129555.jpg) no-repeat;
+}
+#divZoom {
+ width: 100px;
+ left: 60px;
+ top: 135px;
+ font-size: 9px;
+ font-family: "Times New Roman";
+ -webkit-text-size-adjust: none;
+ color: #FFF;
+}
+</style>
+</head>
+<body ondragstart="return false">
+<div id="divBox" style="left: 720px; top: 218px; ">
+  <div id="divMask" style="background-size: 2560px 1600px; background-position: -1520px -516px; "></div>
+  <img src="http://files.jb51.net/file_images/article/201212/201212101129556.gif">
+  <div id="divZoom">ZOOM  2.0</div>
+</div>
+<script>
+function $(v){return document.getElementById(v)}
+var styBox = $("divBox").style;
+var styMask = $("divMask").style;
+var RATE_MIN = 1.5;
+var RATE_MAX = 4;
+var RATE_INC = 0.1;
+var IMG_W = 1280;
+var IMG_H = 800;
+var ZoomRate = 1.5;
+ImgZoom();
+function ImgZoom()
+{
+ var width = Math.round(IMG_W * ZoomRate);
+ var height = Math.round(IMG_H * ZoomRate);
+ styMask.backgroundSize = width + "px " + height + "px";
+ $("divZoom").innerHTML = "ZOOM  " + ZoomRate.toFixed(1)
+}
+function ImgMove(x,y)
+{
+ var left = Math.round(-ZoomRate * x + 80);
+ var top = Math.round(-ZoomRate * y + 80);
+ styMask.backgroundPosition = left + "px " + top + "px";
+}
+document.onmousedown = function()
+{
+ event.preventDefault();
+}
+document.onmousemove = function()
+{
+ styBox.pixelLeft = event.x - 80;
+ styBox.pixelTop = event.y - 80;
+ ImgMove(event.x, event.y);
+}
+document.onmousewheel = function()
+{
+ ZoomRate += (event.wheelDelta>0?RATE_INC:-RATE_INC);
+ if(ZoomRate < RATE_MIN)
+  ZoomRate = RATE_MIN;
+ else if(ZoomRate > RATE_MAX)
+ ZoomRate = RATE_MAX;
+ ImgZoom();
+ ImgMove(event.x, event.y);
+}
+</script>
+</body>
+</html>

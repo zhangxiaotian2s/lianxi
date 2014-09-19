@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="js/jquery-1.9.1.js"></script>
+</head>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+li {
+	list-style: none
+}
+a {
+	text-decoration: none
+}
+img {
+	border: 0
+}
+.banner {
+	margin: 60px auto;
+	width: 600px;
+	height: 300px;
+	 overflow:hidden;
+	position:relative;
+}
+#ImgBox  { position:absolute; top:0px; left:0px;  width:5000px;}
+#ImgBox  li{ width:600px; height:300px; overflow:hidden; float:left}
+#bannerTilte  li{ width:600px;  height:46px; position:absolute; left:0px;  bottom:0px; padding:10px 20px; background:url(images/blank50bk.png); color:#FFF; display:none}
+#bannerTilte  li h2{ font-size:16px; line-height:20px;}
+#bannerTilte  li  p{ line-height:16px; font-size:12px;}
+#bannerBtn { position:absolute; bottom:5px;left:45%}
+#bannerBtn li{ float:left; width:10px; height:10px; overflow:hidden; background:#000; margin:2px 5px; border-radius:5px; cursor:pointer; font-size:0px;}
+#bannerBtn li.curBtn{ background:#F00}
+.left_right{ width:100%;  height:80px; position:absolute ; left:0px; top:50%}
+.left_right span{ float:left; margin-left:20px; display:block; width:30px; height:30px; background:#000; color:#FFF; text-align: center ; font-size:30px; line-height:30px; cursor:pointer;  border-radius:15px;}
+.left_right span.rightBtn{ float:right; margin-right:20px;}
+</style>
+<body>
+<div class="banner" id="banner">
+  <ul id="ImgBox">
+    <li><a href="#"><img src="images/g008.jpg" width="600" height="300"></a></li>
+    <li><a href="#"><img src="images/g008.jpg" width="600" height="300"></a></li>
+    <li><a href="#"><img src="images/g008.jpg" width="600" height="300"></a></li>
+    <li><a href="#"><img src="images/g008.jpg" width="600" height="300"></a></li>
+  </ul>
+  <ul id="bannerTilte">
+    <li style=" display:block">
+      <h2>文章出轨怎了办</h2>
+      <p>马伊琍牛奶股票飙马伊琍牛奶股票飙升马伊琍牛奶股票飙升马伊琍牛奶股票飙升马伊琍牛奶股票飙升升</p>
+    </li>
+    <li>
+      <h2>文章出轨怎了办</h2>
+      <p>马伊琍牛奶股票飙马伊琍牛奶股票飙升马伊琍牛奶股票飙升马伊琍牛奶股票飙升马伊琍牛奶股票飙升升</p>
+    </li>
+    <li>
+      <h2>文章出轨怎了办</h2>
+      <p>马伊琍牛奶股票飙马伊琍牛奶股票飙升马伊琍牛奶股票飙升马伊琍牛奶股票飙升马伊琍牛奶股票飙升升</p>
+    </li>
+    <li>
+      <h2>文章出轨怎了办</h2>
+      <p>马伊琍牛奶股票飙马伊琍牛奶股票飙升马伊琍牛奶股票飙升马伊琍牛奶股票飙升马伊琍牛奶股票飙升升</p>
+    </li>
+  </ul>
+  <ul id="bannerBtn">
+    <li class="curBtn">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+  
+  <div class="left_right" id="banlieftright">
+  <span class="rightBtn">》</span>
+    <span   class="leftBtn">《</span>
+    
+  
+  </div>
+ 
+    
+  
+  
+</div>
+
+<script>
+
+//Author  :Zhang Xiaotian
+//Version :1.0
+//E-mail  :506834853@qq.com
+
+(function($) {
+	$.fn.scrollfn = function(Parameter, ImgBoxId) {
+		var ImgBox = $(ImgBoxId),
+		Defaults = {
+			InterTime: 5000,
+			OverTime: 1000,
+			leftright: null,
+			Titleul:null,
+			Btnul :null,
+			BannerBtnclass: "curBtn",
+			BnanerGeshu: 1,
+			isAutomatic: 0
+		},
+		Parameter = $.extend({},Defaults, Parameter);
+		var i = 1,
+		timer;
+		//获取& 按钮处理的方法
+		function btnFn(num){
+			if(Parameter.Btnul){
+			var _Btnul=$(Parameter.Btnul);
+			_Btnul.children("li").removeClass(Parameter.BannerBtnclass).eq(num).addClass(Parameter.BannerBtnclass);
+			}
+		}
+		//获取 &标题处理方法
+		function titFn(num){
+			if(Parameter.Titleul){
+			var _Titleul=$(Parameter.Titleul);
+		     _Titleul.children("li").slideUp(Parameter.OverTime).eq(num).slideDown(Parameter.OverTime);
+			}
+		}
+		
+		//处理自动滚动的方法
+		function startDirection() {
+			if (Parameter.BnanerGeshu * i >= ImgBox.children("li").length) {
+				i = 0;
+			}
+			ImgBox.animate({
+				"left": -ImgBox.children("li").width() * Parameter.BnanerGeshu * i
+			},
+			Parameter.OverTime);
+			//按钮处理方法执行
+			btnFn(i);
+			//标题的处理
+			titFn(i);
+			i++;
+		}
+		// 自动滚动处理
+		function Automatic() {
+			if (Parameter.isAutomatic) {
+				timer = setInterval(startDirection, Parameter.InterTime);
+			}
+		}
+		//////////按键显示的方法
+		function btnStart(num) {
+			var i = num;
+			 ImgBox.stop(true, true).animate({
+				"left": -ImgBox.children("li").width() * Parameter.BnanerGeshu * i
+			},
+			Parameter.OverTime);
+			btnFn(i);
+			titFn(i);
+		}
+		//鼠标划过按钮的处理
+		if(Parameter.Btnul){
+			var _Btnul=$(Parameter.Btnul);
+		    _Btnul.children("li").hover(function() {
+			clearInterval(timer);
+			btnStart($(this).index());
+
+		},
+		function() {
+			Automatic();
+		})
+		}
+		//判断按钮状态 处理左右按钮
+		if (Parameter.leftright) {
+
+			var DirectionBtn = $(Parameter.leftright),
+			rightBtn = DirectionBtn.find("span").eq(0),
+			leftBtn = DirectionBtn.find("span").eq(1);
+			DirectionBtn.hover(function() {
+			 clearInterval(timer);
+			},
+			function() {
+				Automatic();
+			})
+			//右方向键
+			rightBtn.click(function() {
+				var thisi = Math.ceil(Math.abs(ImgBox.position().left / ImgBox.children("li").width()) + 1);
+				if (thisi >= ImgBox.children("li").length) {
+					thisi = 0;
+				}
+				btnStart(thisi);
+			})
+			//左方向键
+			leftBtn.click(function() {
+				var thisi = Math.ceil(Math.abs(ImgBox.position().left / ImgBox.children("li").width()) - 1);
+				if (thisi < 0) {
+					thisi = ImgBox.children("li").length - 1;
+				}
+				btnStart(thisi);
+			})
+		}
+		//自动执行
+		Automatic();
+	}
+})(jQuery);
+	
+	
+	
+$(document).ready(function() {
+	$.fn.scrollfn({
+		    InterTime : 5000,  //自动滚动的间隔时间
+		    OverTime  : 1000,  //效果的缓冲时间
+			leftright:"#banlieftright",
+			Titleul:"#bannerTilte",
+			Btnul :"#bannerBtn",
+			BannerBtnclass: "curBtn",  //按钮的样式
+		    BnanerGeshu: 1,          //滚动距离 （一般指单个li长度） 的倍数
+			isAutomatic: 1 ,        //自动滚动开关 默认关闭 1 打开   0关闭 
+		},"#ImgBox");
+});
+</script>
+
+
+</body>
+</html>

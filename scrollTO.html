@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="js/jquery-1.7.2.js"></script>
+<script src="js/jquery.mousewheel.js"></script>
+</head>
+<style>
+*{ margin:0; padding:0}
+.divstyle{ width:100% ; overflow:hidden}
+.div1{  height:300px; background:#0CF}
+.div2{ height:800px; background:#33C}
+.div3{  height:800px; background:#990}
+.div4{ height:800px; background:#F00 }
+.div5{ height:800px; background:#FF0}
+.num{ position:fixed; top:0px; width:100%; text-align:center; font-size:16px;}
+</style>
+
+<body>
+<div class="divstyle div1">
+</div>
+<div class="divstyle div2">
+</div>
+<div class="divstyle div3">
+</div>
+<div class="divstyle div4">
+</div>
+<div class="divstyle div5">
+</div>
+<p class="num">1</p>
+<script>
+$(document).ready(function(e) {
+    var div2top=$(".div2").offset().top;
+	var pnum=$(".num")
+    var a=[0,300,1100,1900,2700];
+	var  i=0;
+	 var timer;
+	
+	  $("body").bind("mousewheel",function(event, delta) {
+            var dir = delta > 0 ? 'Up' : 'Down',
+                vel = Math.abs(delta);
+                 timeoutId = $(this).data('timeoutId');
+         if (timeoutId) {
+              clearTimeout(timeoutId);
+            }
+	    $(this).data('timeoutId', setTimeout(function() {
+           if(dir=='Down'){
+			  i++
+			   if(i<0){
+				   i=0
+				   }
+			   if(i>=a.length-1){
+				   i=a.length-1
+				   }
+			   $("html,body").animate({scrollTop:a[i]},400)
+			 
+			   }
+			   if(dir=='Up'){
+				   i--
+				  if($(window).scrollTop()<=100 || i<0){
+				   i=0
+				   }
+				   if(i>=a.length-1){
+				   i=a.length-1
+				   }
+				    $("html,body").animate({scrollTop:a[i]},400)		    
+				   } 
+			   pnum.html(i)
+			   
+         $(this).removeData('timeoutId');
+         
+            }, 1000));
+         return false;
+		})
+
+});
+
+
+</script>
+
+</body>
+</html>
