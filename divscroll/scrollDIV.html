@@ -3,45 +3,39 @@
 <head>
 <meta charset="utf-8">
 <title>无标题文档</title>
-<script src="js/jquery-1.7.2.js"></script>
-<script src="js/jquery.mousewheel.js"></script>
-<style>
-*{ margin:0; padding:0}
-li{ list-style:none}
-.index_box{  width:100%; max-width:1440px;max-height:850px; overflow:hidden; position:relative}
-.in_nr_box{  width:100%; max-width:1440px; overflow:hidden;}
-.park{width:100%; max-width:1440px;max-height:850px; overflow:hidden;}
-.div1{ background:#03F}
-.div2{ background:#CCC}
-.div3{ background:#990}
-.div4{ background:#C60}
-
-
-#btn_ul{ position:absolute; top:45%; right:2%}
-#btn_ul li{ width:16px; height:16px; background:#fff; border-radius:8px; font-size:0px; margin-top:10px; cursor:pointer}
-#btn_ul li.cur{ background:#F00}
-</style>
+<script src="../js/jquery-1.7.2.js"></script>
+<script src="../js/jquery.mousewheel.js"></script>
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="action.css" />
 </head>
 <body>
-
 <div class="index_box">
-<div class="in_nr_box">
-<div class="park div1"></div>
-<div class="park div2"></div>
-<div class="park div3"></div>
-<div class="park div4"></div>
+  <div class="in_nr_box">
+    <div class="park div1">
+      <div class="green">
+        <div class="red">
+          <div class="pink">
+            <div class="white">
+              <div class="hours hourszhuan"></div>
+              <div class="minutes minuteszhuan"></div>
+              <div class="black"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="park div2"></div>
+    <div class="park div3"></div>
+    <div class="park div4"></div>
+  </div>
 </div>
-</div>
-
 <ul id="btn_ul">
-<li  class="cur">1</li>
-<li>2</li>
-<li>3</li>
-<li>4</li>
+  <li  class="cur">1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
 </ul>
-
 </body>
-
 <script>
 $(document).ready(function(e) {
      $(".park,.index_box").css({"height":$(window).height()})
@@ -51,14 +45,17 @@ $(document).ready(function(e) {
 	    window.divHeight=$(".park").height();
 		var i=$("#btn_ul li.cur").index()
 			marigntopFN(i,0)
+			btnlistyle(i) 
 		})
-		
-		
+
+	
+	   
 $("#btn_ul li").click(function(){
-	$(this).addClass("cur")
-	$(this).siblings(this).removeClass("cur");
+	//$(this).addClass("cur")
+	//$(this).siblings(this).removeClass("cur");
 	var i=$(this).index();
 	marigntopFN(i,1000)
+	btnlistyle(i) 
 	})
  $(".in_nr_box").bind("mousewheel",function(event, delta) {	
             var dir = delta > 0 ? 'Up' : 'Down',
@@ -75,6 +72,7 @@ $("#btn_ul li").click(function(){
 					 i=$("#btn_ul li").length-1
 					}	 
 				 marigntopFN(i,1000) 
+				 btnlistyle(i) 
 				 }
 			if(dir=='Up'){
 				i--
@@ -82,12 +80,11 @@ $("#btn_ul li").click(function(){
 					i=0
 					}	
 				 marigntopFN(i,1000)
+				 btnlistyle(i) 
 				}	 
 		 $(this).removeData('timeoutId');
             }, 1000));
-				 
          //return false;		
- 
  })
 $("body").keydown(function(event){
 	var i=$("#btn_ul li.cur").index()
@@ -97,6 +94,7 @@ $("body").keydown(function(event){
 			 i=$("#btn_ul li").length-1
 			}
 		marigntopFN(i,1000)
+		btnlistyle(i) 
 		
 		}	
 		if(event.which==38 || event.which==33){
@@ -105,20 +103,33 @@ $("body").keydown(function(event){
 			i=0
 			}
 		marigntopFN(i,1000)
+		btnlistyle(i)   
 		
 		}	
 })	
 function marigntopFN(i,speed){//控制div marign-top的函数  i 这个形参为获取当前按钮获得激活样式的 index 值
-     
 	$(".in_nr_box").animate({"margin-top":-divHeight*i},speed);
 	 $("#btn_ul li").eq(i).addClass("cur").siblings(this).removeClass("cur")
 	}		
+function btnlistyle(i){
+	
+	
+	if(i==1){
+
+	 $("#btn_ul li").hide(10).delay(1000).show(10).css({"background":"#000"})
+	 $("#btn_ul li.cur").css({"background":"#ff0000"})
+	}else
+	  {
+	  $("#btn_ul li").hide(10).delay(1000).show(10).css({"background":"#fff"})
+	  
+	  $("#btn_ul li.cur").css({"background":"#ff0000"})
+	}
+	
+	
+}
 		
-	
-	
 });
 
 
 </script>
-
 </html>

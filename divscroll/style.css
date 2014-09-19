@@ -1,0 +1,54 @@
+*{ margin:0; padding:0}
+li{ list-style:none}
+
+.index_box{  width:100%; max-width:1440px;max-height:850px; overflow:hidden; position:relative}
+.in_nr_box{  width:100%; max-width:1440px; overflow:hidden;}
+.park{width:100%; max-width:1440px;max-height:850px; overflow:hidden;}
+.div1{ background:#03F; position: relative;}
+.div2{ background:#FFFFFF}
+.div3{ background:#990}
+.div4{ background:#C60; position:absolute}
+
+.green{ background: #40bda4;}
+.red{ background: #e94849;}
+.pink{ background: #f69fa0;}
+.white{ background: #FFFFFF;}
+.black{ background: #626463;}
+#btn_ul{ position:absolute; top:45%; right:2%}
+#btn_ul li{ width:16px; height:16px; background:#fff; border-radius:8px; font-size:0px; margin-top:10px; cursor:pointer}
+#btn_ul li.cur{ background:#F00}
+
+
+.div1 .green{ position: absolute; top: 150px; left: 50px; width: 500px; height: 500px; border-radius: 250px;}
+.div1 .red{position: absolute; top: 50px; left:50px; width: 400px; height: 400px; border-radius: 200px;}
+
+.div1 .pink{position: absolute; top: 10px; left:10px; width: 380px; height: 380px;border-radius: 190px;}
+.div1 .white{position: absolute; top: 5px; left:5px; width: 370px; height: 370px;border-radius: 185px;}
+.div1 .black{position: absolute; top: 155px; left:155px; width: 60px; height: 60px;border-radius: 50px; }
+.div1 .hours{position: absolute;  left: 170px; top: 50px; width: 30px; height:135px ; background: #626463; border-radius:15px;}
+.div1 .minutes{position: absolute;  left: 175px; top: 30px; width: 20px; height:155px ;background: #626463; border-radius:15px;}
+
+
+.hourszhuan{
+	-webkit-animation:ac_hourszhuan 30s linear;
+	-moz-animation:ac_hourszhuan 30s linear;
+	-o-animation:ac_hourszhuan 30s linear;
+	animation:ac_hourszhuan 30s linear;
+	
+	
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count:infinite;
+	
+}
+.minuteszhuan{
+	-webkit-animation:ac_minuteszhuan 2s linear;
+	-moz-animation:ac_minuteszhuan 2s linear;
+	-o-animation:ac_minuteszhuan 2s linear;
+	animation:ac_minuteszhuan 2s linear;
+	
+	
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count:infinite;
+	
+}
+
