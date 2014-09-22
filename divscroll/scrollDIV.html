@@ -32,8 +32,7 @@
       		<li><a href="#">范围范围范围范围发威发威发威发文发文</a></li>
       		<li><a href="#">范围范围范围范围发威发威发威发文发文</a></li>
       		<li><a href="#">范围范围范围范围发威发威发威发文发文</a></li>
-      		<li><a href="#">范围范围范围范围发威发威发威发文发文</a></li>
-      		
+      		<li><a href="#">范围范围范围范围发威发威发威发文发文</a></li>      		
       		
       	</ul>
       	
@@ -173,21 +172,21 @@ function addclassfn(elemet,classname,times){
 	
 	
 		$(elemet).eq(times).removeClass(classname).hide(10).show(10).addClass(classname)
-		
-	
-	
 	
 }
 function  controlcss(i){
 	
-	
+	var a=0
 	switch(i){
 		case 0:
 		addclassfn(".div1 .green,.div1 pink","b_s_chang");
 		addclassfn(".div1 .red,.div1 .white","s_b_chang");
-		setTimeout(function(){
-		addclassfn(".div1right li","rightIn",2);
-		},1000)
+		$(".div1right li").hide()
+		setInterval(function(){
+			
+		addclassfn(".div1right li","rightIn",a);
+		a++
+		},500)
 		break;
 		
 		
