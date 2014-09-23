@@ -1,3 +1,20 @@
+Skip to content
+ This repository
+Explore
+Gist
+Blog
+Help
+zhangxiaotian2s zhangxiaotian2s
+ 
+You don't have any verified emails. We recommend verifying at least one email.
+Email verification helps our support team verify ownership if you lose account access and allows you to receive all the notifications you ask for.
+1  Unwatch 
+  Star 0
+ Fork 0zhangxiaotian2s/lianxi
+ tree: ac59636722  lianxi / divscroll / action.css
+zhangxiaotiangitzhangxiaotiangit 17 hours ago 922
+1 contributor
+99 lines (75 sloc)  1.32 kb RawBlameHistory  
 @keyframes ac_hourszhuan{
 	from{
 		 transform:rotate(0deg);
@@ -9,7 +26,18 @@
 		
 	}
 }
-@-moz-keyframes ac_minuteszhuan{
+@-webkit-keyframes ac_hourszhuan{
+	from{
+		 -webkit-transform:rotate(0deg);
+		  -webkit-transform-origin: 50% 100%;
+	}
+	to{
+		-webkit-transform:rotate(360deg);
+		  -webkit-transform-origin: 50% 100%;
+		
+	}
+}
+@keyframes ac_minuteszhuan{
 	from{
 		transform:rotate(0deg);
 		  transform-origin: 50% 100%;
@@ -19,6 +47,69 @@
 		
 		transform:rotate(360deg);
 		  transform-origin: 50% 100%;
+		
+	}
+	
+	
+}
+
+@keyframes ac_b_s_chang{
+	10%{ transform:translate(0px,0px);
+	  
+	}
+	50%{transform:translate(10px,10px);
+	}
+	70%{transform:translate(20px,15px);
+	
+	}
+	100%{transform:translate(0px,0px);
+	
+	}
+}
+
+@keyframes ac_s_b_chang{
+   10%{
+   	 transform: translate(0px,0px);
+  
+   }
+	50%{transform:translate(-10px,-10px);
+	
+	}
+	70%{transform:translate(10px,-20px);
+	}
+	
+	100%{transform:translate(0px,0px);
+	
+	}
+}
+
+@keyframes ac_rightIn{
+	from{
+		transform:translateX(2000PX)
+		
+	}
+	to{
+		transform:translateX(0PX)
+		
+	}
+}
+@-webkit-keyframes ac_rightIn{
+from{
+		-webkit-transform:translateX(2000PX)
+		
+	}
+	to{
+		-webkit-transform:translateX(0PX)
+		
+	}
+}
+@-moz-keyframes ac_rightIn{
+	from{
+		-moz-transform:translateX(2000PX)
+		
+	}
+	to{
+		-moz-transform:translateX(0PX)
 		
 	}
 }
