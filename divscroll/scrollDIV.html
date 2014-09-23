@@ -12,10 +12,10 @@
 <div class="index_box">
   <div class="in_nr_box">
     <div class="park div1">
-      <div class="green ">
-        <div class="red ">
-          <div class="pink ">
-            <div class="white ">
+      <div class="green">
+        <div class="red">
+          <div class="pink">
+            <div class="white">
               <div class="hours hourszhuan"></div>
               <div class="minutes minuteszhuan"></div>
               <div class="black"></div>
@@ -23,25 +23,6 @@
           </div>
         </div>
       </div>
-      <div class="div1right ">
-      	<ul>
-      		<li><a href="#">范围范围范围范围发威发威发威发文发文</a></li>
-      		<li><a href="#">范围范围范围范围发威发威发威发文发文</a></li>
-      		<li><a href="#">范围范围范围范围发威发威发威发文发文</a></li>
-      		<li><a href="#">范围范围范围范围发威发威发威发文发文</a></li>
-      		<li><a href="#">范围范围范围范围发威发威发威发文发文</a></li>
-      		<li><a href="#">范围范围范围范围发威发威发威发文发文</a></li>
-      		<li><a href="#">范围范围范围范围发威发威发威发文发文</a></li>
-      		<li><a href="#">范围范围范围范围发威发威发威发文发文</a></li>
-      		
-      		
-      	</ul>
-      	
-      	
-      </div>
-      
-      
-      
     </div>
     <div class="park div2"></div>
     <div class="park div3"></div>
@@ -73,14 +54,8 @@ $("#btn_ul li").click(function(){
 	//$(this).addClass("cur")
 	//$(this).siblings(this).removeClass("cur");
 	var i=$(this).index();
-	if(i==$("#btn_ul li.cur").index()){
-	
-
-	}
-	
-	marigntopFN(i,1000);
-	btnlistyle(i);
-	controlcss(i);
+	marigntopFN(i,1000)
+	btnlistyle(i) 
 	})
  $(".in_nr_box").bind("mousewheel",function(event, delta) {	
             var dir = delta > 0 ? 'Up' : 'Down',
@@ -111,17 +86,9 @@ $("#btn_ul li").click(function(){
             }, 1000));
          //return false;		
  })
- 
- $("body").bind("keydown",function(event){
- 	
- 	  timeoutId = $(this).data('timeoutId');
-         if (timeoutId) {
-              clearTimeout(timeoutId);
-            }
- 	 $(this).data('timeoutId', setTimeout(function() {
- 	 	
- 	 var i=$("#btn_ul li.cur").index()
-	  if(event.which==40 || event.which==34){
+$("body").keydown(function(event){
+	var i=$("#btn_ul li.cur").index()
+	if(event.which==40 || event.which==34){
 		i++
 		 if(i>=$("#btn_ul li").length-1){
 			 i=$("#btn_ul li").length-1
@@ -139,13 +106,7 @@ $("#btn_ul li").click(function(){
 		btnlistyle(i)   
 		
 		}	
- 	 	
- 	 $(this).removeData('timeoutId');
-            }, 1000));
- 	
- })
- 
-
+})	
 function marigntopFN(i,speed){//控制div marign-top的函数  i 这个形参为获取当前按钮获得激活样式的 index 值
 	$(".in_nr_box").animate({"margin-top":-divHeight*i},speed);
 	 $("#btn_ul li").eq(i).addClass("cur").siblings(this).removeClass("cur")
@@ -165,40 +126,7 @@ function btnlistyle(i){
 	}
 	
 	
-	
-	
-	
 }
-function addclassfn(elemet,classname,times){
-	
-	
-		$(elemet).eq(times).removeClass(classname).hide(10).show(10).addClass(classname)
-		
-	
-	
-	
-}
-function  controlcss(i){
-	
-	
-	switch(i){
-		case 0:
-		addclassfn(".div1 .green,.div1 pink","b_s_chang");
-		addclassfn(".div1 .red,.div1 .white","s_b_chang");
-		setTimeout(function(){
-		addclassfn(".div1right li","rightIn",2);
-		},1000)
-		break;
-		
-		
-	}
-	
-	
-	
-}
-
-
-
 		
 });
 
