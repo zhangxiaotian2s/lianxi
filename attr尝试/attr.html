@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="../js/jquery-1.7.2.js"></script>
+</head>
+
+<body>
+
+<img src="../images/1.png" width="347" height="235" alt="">
+
+<div class="imgbk"></div>
+</body>
+<script>
+$(document).ready(function(e) {
+	var imgpic=$("img")
+    var imgsrc=imgpic.attr("src")
+	$(".imgbk").css({
+		"width":imgpic.width(),
+	    "height":imgpic.height(),"background-image":'url('+imgsrc+')'
+	})
+});
+</script>
+
+
+
+</html>
