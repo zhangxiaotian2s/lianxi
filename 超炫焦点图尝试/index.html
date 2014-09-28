@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link type="text/css" rel="stylesheet" href="css.css">
+<link  type="text/css" rel="stylesheet" href="action.css">
+<script src="jquery-1.7.2.js"></script>
+</head>
+
+<body>
+<div id="imgbox">
+<div class="mubu">
+
+</div>
+<ul id="imgul" style="display:none">
+   <li><img src="img01.jpg" width="1000" height="500" alt=""></li>
+   <li><img src="img02.jpg" width="1000" height="500" alt=""></li>
+    <li><img src="img03.jpg" width="1000" height="500" alt=""></li>
+</ul>
+</div>
+
+
+<script>
+$(document).ready(function(e) {
+	var timernr,timerfn;
+    var imgul=$("#imgul"),
+	    imgbox=$("#imgbox");
+		
+	var ar_imgsrc = new Array();	
+		
+	for (i=0;i<imgul.children("li").length;i++){
+		 ar_imgsrc[i]=imgul.children("li").eq(i).children("img").attr('src')	   
+	}	
+		
+	//循环插入50个span	
+   for(i=1;i<=50;i++){
+	   $(".mubu").append("<span></span>")
+	}
+	//位每一个span添加imgspan+i的样式
+    for(i=1;i<=50;i++){   
+		  $(".mubu").children("span").eq(i-1).addClass("imgspan"+i)
+	}
+    //给刚打开的时候span标签添加背景
+   $(".mubu").children("span").css({"background-image":'url('+ ar_imgsrc[0]+')'})
+	
+	//清楚动作样式
+	function clearstylefn(){
+	  $(".mubu").children("span").removeClass("scroll2dIn")
+	}
+	
+	//样式的效果处理 循环为每个span添加效果
+    function fnstyle(a){	  
+	   var speeds=0
+	   timernr=setInterval(function(){
+		    $(".mubu").children("span").eq(speeds).show().css({"background-image":'url('+ ar_imgsrc[a]+')'}).addClass("scroll2dIn")
+		    speeds++
+			if(speeds>=50){
+		    clearInterval(timernr) 		
+				}
+		   },20) 
+	
+		   
+		 
+	 }
+	 
+	 var index=1
+	  timerfn=setInterval(function(){
+		 clearstylefn()
+		 fnstyle(index);
+		 index++;
+	     if(index>=3){
+		 index=0
+		 }
+	
+		 },3000)
+	 
+	 
+	   
+});
+
+
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ margin:0; padding:0;}
+li{ list-style:none}
+a{ text-decoration:none}
+
+#imgbox{ width:1000px; height:500px;  margin:auto}
+.mubu{ width:1000px; height:500px;  }
+.imgul li{width:1000px; height:500px;}
+.mubu span{ display:block;    width:100px; height:100px; overflow:hidden; float:left; background-repeat: no-repeat; }
+.imgspan1{ background-position:0px 0px  }
+.imgspan2{ background-position:-100px 0px  }
+.imgspan3{ background-position:-200px 0px  }
+.imgspan4{ background-position:-300px 0px  }
+.imgspan5{ background-position:-400px 0px  }
+.imgspan6{ background-position:-500px 0px  }
+.imgspan7{ background-position:-600px 0px  }
+.imgspan8{ background-position:-700px 0px  }
+.imgspan9{ background-position:-800px 0px  }
+.imgspan10{ background-position:-900px 0px  }
+
+.imgspan11{ background-position:0px -100px  }
+.imgspan12{ background-position:-100px -100px  }
+.imgspan13{ background-position:-200px -100px  }
+.imgspan14{ background-position:-300px -100px  }
+.imgspan15{ background-position:-400px -100px  }
+.imgspan16{ background-position:-500px -100px  }
+.imgspan17{ background-position:-600px -100px  }
+.imgspan18{ background-position:-700px -100px  }
+.imgspan19{ background-position:-800px -100px  }
+.imgspan20{ background-position:-900px -100px  }
+
+.imgspan21{ background-position:0px -200px  }
+.imgspan22{ background-position:-100px -200px  }
+.imgspan23{ background-position:-200px -200px  }
+.imgspan24{ background-position:-300px -200px  }
+.imgspan25{ background-position:-400px -200px  }
+.imgspan26{ background-position:-500px -200px  }
+.imgspan27{ background-position:-600px -200px  }
+.imgspan28{ background-position:-700px -200px  }
+.imgspan29{ background-position:-800px -200px  }
+.imgspan30{ background-position:-900px -200px  }
+
+
+.imgspan31{ background-position:0px -300px  }
+.imgspan32{ background-position:-100px -300px  }
+.imgspan33{ background-position:-200px -300px  }
+.imgspan34{ background-position:-300px -300px  }
+.imgspan35{ background-position:-400px -300px  }
+.imgspan36{ background-position:-500px -300px  }
+.imgspan37{ background-position:-600px -300px  }
+.imgspan38{ background-position:-700px -300px  }
+.imgspan39{ background-position:-800px -300px  }
+.imgspan40{ background-position:-900px -300px  }
+
+.imgspan41{ background-position:0px -400px  }
+.imgspan42{ background-position:-100px -400px  }
+.imgspan43{ background-position:-200px -400px  }
+.imgspan44{ background-position:-300px -400px  }
+.imgspan45{ background-position:-400px -400px  }
+.imgspan46{ background-position:-500px -400px  }
+.imgspan47{ background-position:-600px -400px  }
+.imgspan48{ background-position:-700px -400px  }
+.imgspan49{ background-position:-800px -400px  }
+.imgspan50{ background-position:-900px -400px  }
+
+
+
+
+
+.scroll2dIn{
+	animation: ac_scroll2dIn 1s ease;
+	-webkit-animation:ac_scroll2dIn 1s ease;
+    -moz-animation:ac_scroll2dIn 1s ease;
+    -o-animation:ac_scroll2dIn 1s ease;	
+}
+
+.leftscrollIn{ 
+   animation: ac_leftscrollIn 1s ease;
+  -webkit-animation:ac_leftscrollIn 1s ease;
+  -moz-animation:ac_leftscrollIn 1s ease;
+  -o-animation:ac_leftscrollIn 1s ease;
+}
+
+
+
+

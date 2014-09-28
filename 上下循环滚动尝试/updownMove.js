@@ -42,11 +42,11 @@
 		downscrollfn()
 	 })
 	$(".scrollbox").touchwipe({
-		wipeLeft:function(){
+		wipeDown:function(){
 		  downscrollfn()
 			},
-		wipeRight:function(){
-			alert("cccc")
+		wipeUp:function(){
+		  upscrollfn()
 		 }
 		
 		})
