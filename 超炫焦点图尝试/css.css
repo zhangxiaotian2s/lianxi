@@ -65,7 +65,10 @@ a{ text-decoration:none}
 .imgspan49{ background-position:-800px -400px  }
 .imgspan50{ background-position:-900px -400px  }
 
+#btnul li{ width:12px; height:12px; float:left; display:inline; margin:5px  10px; border-radius:6px; color:#06F; background:#06F;
+ font-size:0px}
 
+#btnul li.cur{ color:#F00; background:#F00}
 
 
 

@@ -18,6 +18,15 @@
    <li><img src="img02.jpg" width="1000" height="500" alt=""></li>
     <li><img src="img03.jpg" width="1000" height="500" alt=""></li>
 </ul>
+
+<div class="btnbox">
+ <ul id="btnul">
+    <li class="cur">1</li>
+    <li>2</li>
+    <li>3</li>
+ </ul>
+
+</div>
 </div>
 
 
@@ -26,18 +35,25 @@ $(document).ready(function(e) {
 	var timernr,timerfn;
     var imgul=$("#imgul"),
 	    imgbox=$("#imgbox");
+	var btncur=$("#btnul").children("li")
 		
-	var ar_imgsrc = new Array();	
+	var ar_imgsrc = new Array(),
+	    ar_stylename=new Array();
+		ar_stylename=['scroll2dIn','leftscrollIn','scroll2dIn','leftscrollIn']	
+	
+	
+	  	
 		
 	for (i=0;i<imgul.children("li").length;i++){
 		 ar_imgsrc[i]=imgul.children("li").eq(i).children("img").attr('src')	   
 	}	
+	
 		
 	//循环插入50个span	
    for(i=1;i<=50;i++){
 	   $(".mubu").append("<span></span>")
 	}
-	//位每一个span添加imgspan+i的样式
+	//为每一个span添加imgspan+i的样式
     for(i=1;i<=50;i++){   
 		  $(".mubu").children("span").eq(i-1).addClass("imgspan"+i)
 	}
@@ -46,37 +62,61 @@ $(document).ready(function(e) {
 	
 	//清楚动作样式
 	function clearstylefn(){
-	  $(".mubu").children("span").removeClass("scroll2dIn")
+		for(i=0;i<ar_stylename.length;i++){
+	  $(".mubu").children("span").removeClass(ar_stylename[i]);
+		}
 	}
 	
 	//样式的效果处理 循环为每个span添加效果
     function fnstyle(a){	  
-	   var speeds=0
+	   var speeds=0;
+	    var randomnum=Math.floor(Math.random()* ar_stylename.length);//随机数
 	   timernr=setInterval(function(){
-		    $(".mubu").children("span").eq(speeds).show().css({"background-image":'url('+ ar_imgsrc[a]+')'}).addClass("scroll2dIn")
+		  
+		$(".mubu").children("span")
+		.eq(speeds).show()
+		.css({"background-image":'url('+ ar_imgsrc[a]+')'})
+		.addClass(ar_stylename[randomnum])
 		    speeds++
 			if(speeds>=50){
 		    clearInterval(timernr) 		
 				}
 		   },20) 
-	
-		   
-		 
 	 }
 	 
+	 function btnstylefn(a){
+		 btncur.eq(a).addClass("cur").siblings().removeClass("cur")
+		 }
+	 function btnclickfn(){
+		 btncur.click(function(){
+			 var i=$(this).index();
+			 clearstylefn()
+			 fnstyle(i);
+			 btnstylefn(i)
+			 
+			 
+			 
+			 })
+		 }
+	 btnclickfn()
+	 
+	 function autofn(){
 	 var index=1
 	  timerfn=setInterval(function(){
 		 clearstylefn()
 		 fnstyle(index);
+		 btnstylefn(index)
 		 index++;
 	     if(index>=3){
 		 index=0
 		 }
 	
 		 },3000)
+	 }
+	 
+	 //autofn()
 	 
 	 
-	   
 });
 
 
