@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.7.2.js"></script>
+<style>
+	*{ margin: 0; padding: 0;}
+    li{ list-style: none;}
+    a{text-decoration: none;}
+    .imitation_select{ width: 198px; margin:200px auto; height: 30px; position: relative;border:#4B555C solid 1px;}
+    .imitation_select input{ width:178px; padding-left:20px;height: 30px; border:0;}
+    .option_div{ position: absolute; top: 30px; left: -1px; overflow: hidden; background: #f9f9f9;border:#4B555C solid 1px;}
+    .option_div ul li{ width: 178px; padding-left: 20px; height:36px; line-height: 36px; }
+     .option_div ul li:hover{ background: #f1f1f1; cursor: pointer;}
+</style>
+</head>
+ <body>
+
+<div id="selectdiv01" class="imitation_select">
+	<input type="text" id="select_text" value="请选择" />
+	<div class="option_div">
+	<ul>
+		    <li data-num="1">小明001</li>
+		    <li data-num="2">小明002</li>
+		    <li data-num="3">小明003</li>
+		    <li data-num="4">小明004</li>
+	</ul>
+	</div>
+	
+</div>
+
+<script>
+	$(document).ready(function(){
+		var optionbox=$(".option_div");
+		var select_input=$("#selectdiv01").children("input")
+		var optionli=optionbox.find("li")
+		
+		optionbox.hide();
+		
+		select_input.bind({
+		'focusin':function(){
+			
+			optionbox.slideDown()
+		},
+		'focusout':function(){
+			optionbox.slideUp()
+		}
+		})
+		optionli.click(function(){
+		 var i=$(this).index(),
+		     valueli=$(this).text();
+		    select_input.val(valueli)
+		})
+		
+		
+	})
+	
+	
+	
+</script>
+
+ </body>
+</html>
